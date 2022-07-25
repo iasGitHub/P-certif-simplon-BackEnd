@@ -7,16 +7,17 @@ import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import sn.ias.Kspace.config.JwtUtils;
 import sn.ias.Kspace.entities.JwtRequest;
 import sn.ias.Kspace.entities.JwtResponse;
+import sn.ias.Kspace.entities.User;
 import sn.ias.Kspace.service.UserDetailsServiceImpl;
 
+import java.security.Principal;
+
 @RestController
+@CrossOrigin("*")
 public class AuthenticateController {
 
     private AuthenticationManager authenticationManager;
@@ -55,5 +56,11 @@ public class AuthenticateController {
         } catch (BadCredentialsException e) {
             throw new Exception("Identifiants invalides " + e.getMessage());
         }
+    }
+
+    // return the details of current user
+    @GetMapping("/current-user")
+    public User getCurrentUser(Principal principal) {
+        return ((User) this.userDetailsService.loadUserByUsername(principal.getName()));
     }
 }
