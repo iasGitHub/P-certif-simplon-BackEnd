@@ -1,5 +1,6 @@
 package sn.ias.Kspace.controller;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import sn.ias.Kspace.entities.Role;
 import sn.ias.Kspace.entities.User;
@@ -16,12 +17,16 @@ public class UserController {
 
     private UserService userService;
 
-    public UserController(UserService userService) {
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    public UserController(UserService userService, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userService = userService;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     @PostMapping("/")
     public User createUser(@RequestBody User user) throws Exception {
+
+        user.setPassword(this.bCryptPasswordEncoder.encode(user.getPassword()));
         Set<UserRole> roles = new HashSet<>();
 
         Role role = new Role();

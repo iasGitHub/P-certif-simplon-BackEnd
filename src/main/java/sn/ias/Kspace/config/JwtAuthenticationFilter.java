@@ -54,7 +54,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             System.out.println("Ce token n'est pas valide, vérifier qu'il contient le terme \"Bearer \" au début !");
         }
 
-        if(username != null && SecurityContextHolder.getContext().getAuthentication()==null)
+        if(username != null && SecurityContextHolder.getContext().getAuthentication() == null)
         {
             final UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
             if (this.jwtUtils.validateToken(jwtToken, userDetails)) {
