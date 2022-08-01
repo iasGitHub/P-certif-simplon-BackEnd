@@ -1,9 +1,8 @@
 package sn.ias.Kspace.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -13,7 +12,8 @@ import java.util.Set;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Getter
+@Setter
 public class Publication {
 
     @Id
@@ -21,6 +21,7 @@ public class Publication {
     private Long id;
     private String title;
     private String content;
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date dateOfPublication;
     private int nbreOfViews;
     private String picture;
