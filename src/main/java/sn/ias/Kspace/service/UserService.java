@@ -2,12 +2,13 @@ package sn.ias.Kspace.service;
 
 import sn.ias.Kspace.entities.User;
 import sn.ias.Kspace.entities.UserRole;
+import sn.ias.Kspace.helper.UserNotFoundException;
 
 import java.util.Set;
 
 public interface UserService {
 
-    public User createUser(User user, Set<UserRole> userRoles) throws Exception;
+    public User createUser(User user, Set<UserRole> userRoles) throws Exception, UserNotFoundException;
     // get user by username
     public User getUser(String username);
 

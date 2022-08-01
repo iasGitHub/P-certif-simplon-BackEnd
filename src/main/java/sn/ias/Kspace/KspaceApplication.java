@@ -31,10 +31,10 @@ public class KspaceApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		System.out.println("Starting ...");
 
-		User user = new User();
+		/*User user = new User(););
+		user.setUsername(
 		user.setFirstName("Sall");
-		user.setLastName("Idriss");
-		user.setUsername("ias");
+		user.setLastName("Idriss""ias");
 		user.setEmail("ias@gmail.com");
 		user.setPassword(this.bCryptPasswordEncoder.encode("Passer123"));
 		user.setPhone("+221 78 292 10 93");
@@ -52,6 +52,6 @@ public class KspaceApplication implements CommandLineRunner {
 
 		userRoleSet.add(userRole);
 		User user1 = this.userService.createUser(user, userRoleSet);
-		System.out.println(user1.getUsername());
+		System.out.println(user1.getUsername());*/
 	}
 }

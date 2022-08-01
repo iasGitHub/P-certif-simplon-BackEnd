@@ -1,10 +1,12 @@
 package sn.ias.Kspace.controller;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import sn.ias.Kspace.entities.Role;
 import sn.ias.Kspace.entities.User;
 import sn.ias.Kspace.entities.UserRole;
+import sn.ias.Kspace.helper.UserFoundException;
 import sn.ias.Kspace.service.UserService;
 
 import java.util.HashSet;
@@ -50,5 +52,11 @@ public class UserController {
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable("id") Long id) {
         this.userService.deleteUser(id);
+    }
+
+    // update api
+    @ExceptionHandler(UserFoundException.class)
+    public ResponseEntity<?> exceptionHandler(UserFoundException ex) {
+        return null;
     }
 }

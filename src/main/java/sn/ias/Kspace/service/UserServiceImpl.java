@@ -3,6 +3,7 @@ package sn.ias.Kspace.service;
 import org.springframework.stereotype.Service;
 import sn.ias.Kspace.entities.User;
 import sn.ias.Kspace.entities.UserRole;
+import sn.ias.Kspace.helper.UserFoundException;
 import sn.ias.Kspace.repository.RoleRepository;
 import sn.ias.Kspace.repository.UserRepository;
 
@@ -20,12 +21,12 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public User createUser(User user, Set<UserRole> userRoles) throws Exception {
+    public User createUser(User user, Set<UserRole> userRoles) throws Exception, UserFoundException {
 
         User local = this.userRepository.findByUsername(user.getUsername());
         if (local != null) {
             System.out.println("User is already there !!");
-            throw new Exception("User already present");
+            throw new UserFoundException();
         } else {
             for(UserRole ur:userRoles)
             {

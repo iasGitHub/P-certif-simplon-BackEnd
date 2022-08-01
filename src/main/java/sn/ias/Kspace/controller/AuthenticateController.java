@@ -12,6 +12,7 @@ import sn.ias.Kspace.config.JwtUtils;
 import sn.ias.Kspace.entities.JwtRequest;
 import sn.ias.Kspace.entities.JwtResponse;
 import sn.ias.Kspace.entities.User;
+import sn.ias.Kspace.helper.UserNotFoundException;
 import sn.ias.Kspace.service.UserDetailsServiceImpl;
 
 import java.security.Principal;
@@ -34,12 +35,10 @@ public class AuthenticateController {
     public ResponseEntity<?> generateToken(@RequestBody JwtRequest jwtRequest) throws Exception {
         try {
             authenticate(jwtRequest.getUsername(), jwtRequest.getPassword());
-        } catch (UsernameNotFoundException e)
+        } catch (UserNotFoundException e)
         {
             e.printStackTrace();
             throw new Exception("Utilisateur non trouvé !");
-        } catch (Exception e) {
-            throw new RuntimeException(e);
         }
 
         UserDetails userDetails = this.userDetailsService.loadUserByUsername(jwtRequest.getUsername());
