@@ -38,8 +38,7 @@ public class PublicationServiceImpl implements PublicationService {
 
     @Override
     public void deletePublication(Long id) {
-        Publication publication = new Publication();
-        publication.setId(id);
+
         this.publicationRepository.deleteById(id);
     }
 }

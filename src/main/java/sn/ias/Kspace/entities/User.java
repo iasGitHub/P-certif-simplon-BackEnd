@@ -16,17 +16,17 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(length = 100, nullable = false)
+    @Column(length = 100, nullable = false, unique = true)
     private String username;
     @Column(length = 100, nullable = false)
     private String firstName;
     @Column(length = 100, nullable = false)
     private String lastName;
-    @Column(length = 100, nullable = false)
+    @Column(length = 100, nullable = false, unique = true)
     private String email;
     @Column(length = 100, nullable = false)
     private String password;
-    @Column(length = 17, nullable = false)
+    @Column(length = 17, nullable = false, unique = true)
     private String phone;
     private boolean enabled = true;
     @Column(length = 100, nullable = false)

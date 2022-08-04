@@ -23,7 +23,7 @@ public class Publication {
     private String content;
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date dateOfPublication;
-    private int nbreOfViews;
+    private int nbreOfViews ;
     private String picture;
     private boolean active = false;
 
