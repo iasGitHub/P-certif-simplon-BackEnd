@@ -2,8 +2,12 @@ package sn.ias.Kspace.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import sn.ias.Kspace.entities.Category;
 import sn.ias.Kspace.entities.Publication;
+import sn.ias.Kspace.entities.User;
 import sn.ias.Kspace.service.PublicationService;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin("*")
@@ -45,4 +49,23 @@ public class PublicationController {
     public void delete(@PathVariable("id") Long id) {
         this.publicationService.deletePublication(id);
     }
+
+    @GetMapping("/category/{id}")
+    public List<Publication> getPublicationsOfCategory(@PathVariable("id") Long id) {
+        Category category = new Category();
+        category.setId(id);
+        return this.publicationService.getPublicationsOfCategory(category);
+    }
+
+    @GetMapping("/active")
+    public List<Publication> getActivePublications() {
+        return this.publicationService.getActivePublications();
+    }
+    @GetMapping("/category/active/{id}")
+    public List<Publication> getActivePublicationOfCategory(@PathVariable("id") Long id) {
+        Category category = new Category();
+        category.setId(id);
+        return this.publicationService.getActivePublicationsOfCategory(category);
+    }
+
 }

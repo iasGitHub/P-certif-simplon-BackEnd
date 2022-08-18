@@ -1,10 +1,13 @@
 package sn.ias.Kspace.service;
 
 import org.springframework.stereotype.Service;
+import sn.ias.Kspace.entities.Category;
 import sn.ias.Kspace.entities.Publication;
+import sn.ias.Kspace.entities.User;
 import sn.ias.Kspace.repository.PublicationRepository;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -40,5 +43,22 @@ public class PublicationServiceImpl implements PublicationService {
     public void deletePublication(Long id) {
 
         this.publicationRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Publication> getPublicationsOfCategory(Category category) {
+        return this.publicationRepository.findByCategory(category);
+    }
+
+    // les publications qui sont actives
+    @Override
+    public List<Publication> getActivePublications() {
+        return this.publicationRepository.findByActive(true);
+    }
+
+    // les publications actives d'une catégories spécifiques
+    @Override
+    public List<Publication> getActivePublicationsOfCategory(Category category) {
+        return this.publicationRepository.findByCategoryAndActive(category, true);
     }
 }

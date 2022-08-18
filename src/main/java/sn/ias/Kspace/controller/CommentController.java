@@ -47,7 +47,7 @@ public class CommentController {
         Set<Comment> comments = publication.getComments();
         List list = new ArrayList(comments);
         if (list.size() > publication.getNbreOfViews()) {
-            list = list.subList(0, publication.getNbreOfViews() +1);
+            list = list.subList(0, (int) (publication.getNbreOfViews() +1));
         }
         Collections.shuffle(list);
         return ResponseEntity.ok(list);

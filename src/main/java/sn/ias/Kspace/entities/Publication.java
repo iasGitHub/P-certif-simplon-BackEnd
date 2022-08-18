@@ -2,6 +2,7 @@ package sn.ias.Kspace.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
@@ -20,15 +21,24 @@ public class Publication {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String title;
+    @Lob // annotation qui suggère à la bd de stocker des informations volumineuses
+    @Column
+    @NotNull
     private String content;
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date dateOfPublication;
-    private int nbreOfViews ;
+    private Long nbreOfViews = 0L;
     private String picture;
     private boolean active = false;
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Category category;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private User user;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Note note;
 
     @OneToMany(mappedBy = "publication", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonIgnore
