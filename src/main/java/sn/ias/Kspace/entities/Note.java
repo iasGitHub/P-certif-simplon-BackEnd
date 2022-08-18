@@ -1,26 +1,29 @@
 package sn.ias.Kspace.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Category {
+@Getter
+@Setter
+public class Note {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private int value;
 
-    @Column(length = 100, nullable = false, unique = true)
-    private String title;
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "note", cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Publication> publications = new LinkedHashSet<>();
 

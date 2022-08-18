@@ -5,10 +5,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 public class User implements UserDetails {
@@ -16,21 +13,25 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(length = 100, nullable = false)
+    @Column(length = 100, nullable = false, unique = true)
     private String username;
     @Column(length = 100, nullable = false)
     private String firstName;
     @Column(length = 100, nullable = false)
     private String lastName;
-    @Column(length = 100, nullable = false)
+    @Column(length = 100, nullable = false, unique = true)
     private String email;
     @Column(length = 100, nullable = false)
     private String password;
-    @Column(length = 17, nullable = false)
+    @Column(length = 17, nullable = false, unique = true)
     private String phone;
     private boolean enabled = true;
     @Column(length = 100, nullable = false)
     private String profile;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<Publication> publications = new LinkedHashSet<>();
 
     public User() {
     }
