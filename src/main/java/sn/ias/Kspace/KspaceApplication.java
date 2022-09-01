@@ -31,14 +31,14 @@ public class KspaceApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		System.out.println("Starting ...");
 
-		/*User user = new User(););
-		user.setUsername(
-		user.setFirstName("Sall");
-		user.setLastName("Idriss""ias");
-		user.setEmail("ias@gmail.com");
-		user.setPassword(this.bCryptPasswordEncoder.encode("Passer123"));
-		user.setPhone("+221 78 292 10 93");
-		user.setProfile("ias.png");
+		User user = new User();
+		user.setUsername("Santi");
+		user.setFirstName("Kane");
+		user.setLastName("Santiago");
+		user.setEmail("santiago22@gmail.com");
+		user.setPassword(this.bCryptPasswordEncoder.encode("Passer"));
+		user.setPhone("+221 77 162 10 28");
+		user.setProfile("santi.png");
 
 		Role role1 = new Role();
 		role1.setId(1L);
@@ -52,7 +52,7 @@ public class KspaceApplication implements CommandLineRunner {
 
 		userRoleSet.add(userRole);
 		User user1 = this.userService.createUser(user, userRoleSet);
-		System.out.println(user1.getUsername());*/
+		System.out.println(user1.getUsername());
 	}
 
 	// Cors configuration
