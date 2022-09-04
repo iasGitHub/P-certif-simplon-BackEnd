@@ -27,7 +27,7 @@ public class Publication {
     private String content;
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date dateOfPublication;
-    private Long nbreOfViews = 0L;
+    private Long nbreOfViews = 1L;
     private String picture;
     private boolean active = false;
 
