@@ -3,6 +3,7 @@ package sn.ias.Kspace.controller;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import sn.ias.Kspace.entities.Publication;
 import sn.ias.Kspace.entities.Role;
 import sn.ias.Kspace.entities.User;
 import sn.ias.Kspace.entities.UserRole;
@@ -44,9 +45,20 @@ public class UserController {
         return this.userService.createUser(user, roles);
     }
 
+    @GetMapping("/{id}")
+    public User user(@PathVariable("id") Long id) {
+        return this.userService.getUser(id);
+    }
+
+
     @GetMapping("/{username}")
-    public User getUser(@PathVariable("username") String username) {
-        return this.userService.getUser(username);
+    public User getUserByUsername(@PathVariable("username") String username) {
+        return this.userService.getUserByUsername(username);
+    }
+
+    @GetMapping("/")
+    public ResponseEntity<?> getUsers() {
+        return ResponseEntity.ok(this.userService.getUsers());
     }
 
     @DeleteMapping("/{id}")

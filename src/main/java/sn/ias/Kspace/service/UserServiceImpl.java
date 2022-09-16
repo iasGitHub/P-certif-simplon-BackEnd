@@ -7,6 +7,7 @@ import sn.ias.Kspace.helper.UserFoundException;
 import sn.ias.Kspace.repository.RoleRepository;
 import sn.ias.Kspace.repository.UserRepository;
 
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Service
@@ -39,12 +40,22 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public User getUser(String username) {
+    public User getUserByUsername(String username) {
         return this.userRepository.findByUsername(username);
+    }
+
+    @Override
+    public User getUser(Long id) {
+        return this.userRepository.findById(id).get();
     }
 
     @Override
     public void deleteUser(Long id) {
         this.userRepository.deleteById(id);
+    }
+
+    @Override
+    public Set<User> getUsers() {
+        return new LinkedHashSet<>(this.userRepository.findAll());
     }
 }

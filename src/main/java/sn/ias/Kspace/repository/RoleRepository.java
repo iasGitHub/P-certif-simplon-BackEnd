@@ -8,4 +8,6 @@ import sn.ias.Kspace.entities.Role;
 @CrossOrigin("*")
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Long> {
+
+    public Role findByRoleName(String roleame);
 }

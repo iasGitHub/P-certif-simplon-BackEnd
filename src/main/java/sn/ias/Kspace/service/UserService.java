@@ -10,8 +10,11 @@ public interface UserService {
 
     public User createUser(User user, Set<UserRole> userRoles) throws Exception, UserNotFoundException;
     // get user by username
-    public User getUser(String username);
+    public User getUserByUsername(String username);
 
+    public User getUser(Long id);
     //delete user by id
     public void deleteUser(Long id);
+
+    public Set<User> getUsers();
 }
