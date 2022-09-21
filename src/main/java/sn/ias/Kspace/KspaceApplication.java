@@ -2,6 +2,7 @@ package sn.ias.Kspace;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import sn.ias.Kspace.entities.Role;
@@ -32,13 +33,13 @@ public class KspaceApplication implements CommandLineRunner {
 		System.out.println("Starting ...");
 
 		/*User user = new User();
-		user.setUsername("Santi");
-		user.setFirstName("Kane");
-		user.setLastName("Santiago");
-		user.setEmail("santiago22@gmail.com");
-		user.setPassword(this.bCryptPasswordEncoder.encode("Passer"));
-		user.setPhone("+221 77 162 10 28");
-		user.setProfile("santi.png");
+		user.setUsername("admin");
+		user.setFirstName("Bâ");
+		user.setLastName("Amadou");
+		user.setEmail("amadouba22@gmail.com");
+		user.setPassword(this.bCryptPasswordEncoder.encode("admin"));
+		user.setPhone("+221 78 142 22 20");
+		user.setProfile("admin.png");
 
 		Role role1 = new Role();
 		role1.setId(1L);

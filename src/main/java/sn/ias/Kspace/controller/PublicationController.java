@@ -40,7 +40,8 @@ public class PublicationController {
 
     // get single pub by id
     @GetMapping("/{id}")
-    public Publication publication(@PathVariable("id") Long id) {
+    public Publication publication(
+            @PathVariable("id") Long id) {
          return this.publicationService.getPublication(id);
     }
 

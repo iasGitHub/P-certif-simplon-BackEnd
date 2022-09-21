@@ -46,7 +46,8 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public User user(@PathVariable("id") Long id) {
+    public User getUser(
+            @PathVariable("id") Long id) {
         return this.userService.getUser(id);
     }
 
@@ -61,6 +62,12 @@ public class UserController {
         return ResponseEntity.ok(this.userService.getUsers());
     }
 
+    // update user
+    @PutMapping("/")
+    public ResponseEntity<User> update(@RequestBody User user) {
+        return ResponseEntity.ok(this.userService.updateUser(user));
+    }
+
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable("id") Long id) {
         this.userService.deleteUser(id);
@@ -71,4 +78,5 @@ public class UserController {
     public ResponseEntity<?> exceptionHandler(UserFoundException ex) {
         return null;
     }
+
 }

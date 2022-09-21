@@ -1,11 +1,13 @@
 package sn.ias.Kspace.service;
 
+import org.springframework.stereotype.Service;
 import sn.ias.Kspace.entities.Role;
 import sn.ias.Kspace.repository.RoleRepository;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+@Service
 public class RoleServiceImpl implements RoleService {
 
     private RoleRepository roleRepository;
